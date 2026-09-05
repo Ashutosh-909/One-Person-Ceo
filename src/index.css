@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  image-rendering: pixelated;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #0f0f1b;
+  color: #e8e6d0;
+  font-family: 'VT323', monospace;
+  overflow: hidden;
+}
+
+/* Pixel-crisp scaling for sprites/emoji tiles */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Beveled retro panel */
+.panel {
+  background: #1b1b2e;
+  border: 3px solid #000;
+  box-shadow: inset -3px -3px 0 0 rgba(0, 0, 0, 0.45),
+    inset 3px 3px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+.panel-raised {
+  background: #252540;
+  border: 3px solid #000;
+  box-shadow: inset -3px -3px 0 0 rgba(0, 0, 0, 0.5),
+    inset 3px 3px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Beveled button */
+.btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 10px 14px;
+  color: #0f0f1b;
+  background: #f5c542;
+  border: 3px solid #000;
+  box-shadow: inset -3px -3px 0 0 rgba(0, 0, 0, 0.4),
+    inset 3px 3px 0 0 rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: transform 60ms ease;
+  user-select: none;
+}
+.btn:hover {
+  filter: brightness(1.08);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 3px 3px 0 0 rgba(0, 0, 0, 0.4),
+    inset -3px -3px 0 0 rgba(255, 255, 255, 0.3);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.btn-ghost {
+  background: #252540;
+  color: #e8e6d0;
+}
+.btn-red {
+  background: #e05a5a;
+  color: #0f0f1b;
+}
+.btn-green {
+  background: #5bd67a;
+  color: #0f0f1b;
+}
+.btn-blue {
+  background: #5aa9e0;
+  color: #0f0f1b;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', monospace;
+}
+.term-font {
+  font-family: 'VT323', monospace;
+}
+
+/* CRT scanline overlay */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0.18) 3px
+  );
+  mix-blend-mode: multiply;
+  animation: flicker 3s infinite;
+}
+.crt-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Elevator doors */
+.door {
+  background: linear-gradient(180deg, #3a3a5a 0%, #252540 100%);
+  border: 3px solid #000;
+}
+
+/* Scrollbar retro */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #12121f;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a3a5a;
+  border: 2px solid #000;
+}
+
+/* Grid whiteboard bg */
+.grid-bg {
+  background-color: #f4f1e0;
+  background-image: linear-gradient(#c9c5a8 1px, transparent 1px),
+    linear-gradient(90deg, #c9c5a8 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Floor tile bg */
+.floor-bg {
+  background-color: #2a2440;
+  background-image: linear-gradient(#00000030 2px, transparent 2px),
+    linear-gradient(90deg, #00000030 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+
+/* Office floorplan */
+.office-carpet {
+  background-color: #2b2a3f;
+  background-image: linear-gradient(#00000022 1px, transparent 1px),
+    linear-gradient(90deg, #00000022 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.office-wall {
+  border: 8px solid #0c0c16;
+  box-shadow: inset 0 0 0 2px #3a3a5a, inset -4px -4px 0 0 rgba(0, 0, 0, 0.4);
+}
+.zone {
+  position: relative;
+  border: 3px solid #000;
+  background: rgba(18, 18, 31, 0.35);
+}
+.zone-glass {
+  border: 3px dashed #5aa9e0;
+  background: rgba(90, 169, 224, 0.08);
+}
+.zone-label {
+  position: absolute;
+  top: -9px;
+  left: 8px;
+  z-index: 5;
+  padding: 1px 5px;
+  border: 2px solid #000;
+  background: #f5c542;
+  color: #0f0f1b;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+}
+.elev-doors {
+  background: repeating-linear-gradient(
+    90deg,
+    #3a3a5a 0,
+    #3a3a5a 6px,
+    #2a2a44 6px,
+    #2a2a44 12px
+  );
+}
+
+/* ===== Isometric room ===== */
+.iso-room {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 0.82;
+}
+.iso-face {
+  position: absolute;
+  inset: 0;
+}
+.iso-floor {
+  clip-path: polygon(3% 56%, 50% 32%, 97% 56%, 50% 80%);
+}
+.iso-wall-l {
+  clip-path: polygon(3% 56%, 50% 32%, 50% 4%, 3% 28%);
+}
+.iso-wall-r {
+  clip-path: polygon(50% 32%, 97% 56%, 97% 28%, 50% 4%);
+}
+/* Iso floor tiling */
+.iso-tiles {
+  background-image: repeating-linear-gradient(
+      63.43deg,
+      rgba(0, 0, 0, 0.16) 0 1px,
+      transparent 1px 26px
+    ),
+    repeating-linear-gradient(
+      -63.43deg,
+      rgba(0, 0, 0, 0.16) 0 1px,
+      transparent 1px 26px
+    );
+}
+/* Wall decor sits skewed to match wall planes */
+.skew-l {
+  transform: skewY(26.565deg);
+}
+.skew-r {
+  transform: skewY(-26.565deg);
+}
+/* Isometric slab top (desk surface) */
+.iso-slab {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.billboard {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.text-shadow-hard {
+  text-shadow: 2px 2px 0 #000;
+}
+
+input,
+textarea {
+  outline: none;
+}
