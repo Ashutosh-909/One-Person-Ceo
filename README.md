@@ -25,9 +25,11 @@ Build a production bundle with `npm run build` and preview it with `npm run prev
    **Registration**. Picking a floor plays an elevator-door transition.
 3. **Floor** — top-down office with 5 department cubicles, a conference room, and
    the elevator. Click cubicles to select departments, then **Meet Now**.
-4. **Round Table** — only the selected agents appear. An auto-seeded standup
-   plays out, you can chat (text + mocked file/image), draw on the whiteboard,
-   and watch agents mutate their to-dos in the side panel.
+4. **Round Table** — only the selected agents appear, seated around a pixel
+   conference table with the CEO at its head. An auto-seeded standup plays out,
+   agents raise typing bubbles over their seats, and the right-hand panel
+   toggles between **CHAT** (text + mocked file/image), **WHITEBOARD**, and
+   **TO-DOS**. Below 1024px the panel undocks and stacks under the room.
 5. **Registration** — create a new project and toggle mocked integrations
    (GitHub, App Store Connect, Instagram, Gmail). Submitting adds a new floor
    seeded with 5 agents.
@@ -59,8 +61,11 @@ src/
     agentEngine.ts        mocked reply engine + canned scripts
     sfx.ts                chiptune blip helper (WebAudio)
   components/
-    Login.tsx  Elevator.tsx  Floor.tsx  Cubicle.tsx
-    RoundTable.tsx  ChatWindow.tsx  Whiteboard.tsx
+    Login.tsx  Elevator.tsx  Lobby.tsx  Floor.tsx
+    RoundTable.tsx          meeting screen: chrome + room + side panel
+    MeetingRoom.tsx         the pixel meeting room itself
+    pixel/PixelSprites.tsx  shared pixel-art sprites
+    ChatWindow.tsx  Whiteboard.tsx
     AgentTodoPanel.tsx  Registration.tsx  Hud.tsx
 ```
 
@@ -69,4 +74,10 @@ src/
 - Fonts: "Press Start 2P" + "VT323" via Google Fonts.
 - Toggle the **CRT** scanline overlay and **SFX** from the top-right HUD.
 - Sprites are emoji-on-tile fallbacks with `image-rendering: pixelated`, so the
-  app runs with zero external image assets.
+  app runs with zero external image assets. The meeting room is the exception:
+  its people, furniture and skyline are CSS pixel art built from coloured
+  blocks, outlined with the `.sprite-outline-*` drop-shadow stacks in
+  `index.css`.
+- The room is authored at a fixed 1312x940 design size and scaled to fit its
+  container, so the pixel art never reflows mid-sprite; it sheds the window art
+  and then the projector chart as it gets small.

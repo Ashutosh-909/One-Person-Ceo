@@ -8,8 +8,20 @@ interface DeptMeta {
   title: string;
   color: string;
   sprite: string;
+  /** Pixel-sprite palette used by the round-table meeting room. */
+  hair: string;
+  skin: string;
   starterTodos: string[];
 }
+
+/** Pixel-sprite palette for the CEO seat and CEO chat avatar. */
+export const CEO_LOOK = {
+  name: 'CEO',
+  color: '#f5c542',
+  hair: '#2b1d14',
+  skin: '#e8b88a',
+  shirt: '#2b2b4a',
+};
 
 export const DEPARTMENTS: DeptMeta[] = [
   {
@@ -18,6 +30,8 @@ export const DEPARTMENTS: DeptMeta[] = [
     title: 'Development',
     color: '#5aa9e0',
     sprite: '👩‍💻',
+    hair: '#2b2b3a',
+    skin: '#e8b88a',
     starterTodos: ['Ship login flow', 'Fix payments null-pointer'],
   },
   {
@@ -26,6 +40,8 @@ export const DEPARTMENTS: DeptMeta[] = [
     title: 'Design',
     color: '#c46be0',
     sprite: '🎨',
+    hair: '#f5c542',
+    skin: '#f0c8a0',
     starterTodos: ['New app icon options', 'Dark theme a11y pass'],
   },
   {
@@ -34,6 +50,8 @@ export const DEPARTMENTS: DeptMeta[] = [
     title: 'Marketing',
     color: '#f5934b',
     sprite: '📣',
+    hair: '#8a3a2a',
+    skin: '#c68a5a',
     starterTodos: ['Schedule teaser post', 'Write launch taglines'],
   },
   {
@@ -42,6 +60,8 @@ export const DEPARTMENTS: DeptMeta[] = [
     title: 'DevOps',
     color: '#5bd67a',
     sprite: '🛠️',
+    hair: '#3a2a1a',
+    skin: '#a86a3a',
     starterTodos: ['Automate SSL renewal', 'Wire up prod alerts'],
   },
   {
@@ -50,6 +70,8 @@ export const DEPARTMENTS: DeptMeta[] = [
     title: 'Finance',
     color: '#f5c542',
     sprite: '💰',
+    hair: '#e8e6d0',
+    skin: '#f0c8a0',
     starterTodos: ['Review cloud burn', 'Model waitlist conversion'],
   },
 ];
