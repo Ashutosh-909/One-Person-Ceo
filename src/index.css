@@ -272,3 +272,74 @@ input,
 textarea {
   outline: none;
 }
+
+/* ===== Round Table meeting room (imported from Claude Design) ===== */
+
+/* Stepped keyframes — no fades, so motion reads as pixel-art frames. */
+@keyframes dc-blink {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes dc-pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes dc-slidein {
+  0% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Black sprite outlines: four stacked drop-shadows keep corners hard at any scale. */
+.sprite-outline-2 {
+  filter: drop-shadow(2px 0 0 #000) drop-shadow(-2px 0 0 #000)
+    drop-shadow(0 2px 0 #000) drop-shadow(0 -2px 0 #000);
+}
+.sprite-outline-3 {
+  filter: drop-shadow(3px 0 0 #000) drop-shadow(-3px 0 0 #000)
+    drop-shadow(0 3px 0 #000) drop-shadow(0 -3px 0 #000);
+}
+.sprite-outline-4 {
+  filter: drop-shadow(4px 0 0 #000) drop-shadow(-4px 0 0 #000)
+    drop-shadow(0 4px 0 #000) drop-shadow(0 -4px 0 #000);
+}
+.sprite-outline-5 {
+  filter: drop-shadow(5px 0 0 #000) drop-shadow(-5px 0 0 #000)
+    drop-shadow(0 5px 0 #000) drop-shadow(0 -5px 0 #000);
+}
+
+/* Meeting-room floor: 72px tile grid */
+.room-floor {
+  background-color: #2a2440;
+  background-image: linear-gradient(#1f1a33 4px, transparent 4px),
+    linear-gradient(90deg, #1f1a33 4px, transparent 4px);
+  background-size: 72px 72px;
+}
+
+/* Beveled chrome used by the meeting top bar / chat panel */
+.dc-bevel {
+  box-shadow: inset 4px 4px 0 #3b3b5e, inset -4px -4px 0 #111120;
+}
+.dc-bevel-deep {
+  box-shadow: inset 4px 4px 0 #3b3b5e, inset -4px -4px 0 #050510;
+}
+.dc-bevel-in {
+  box-shadow: inset 3px 3px 0 #050510, inset -3px -3px 0 #3b3b5e;
+}

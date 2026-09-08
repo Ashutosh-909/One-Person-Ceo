@@ -50,9 +50,9 @@ export default function Whiteboard() {
   };
 
   return (
-    <div className="panel flex h-full flex-col overflow-hidden">
-      <div className="flex items-center gap-2 border-b-2 border-black bg-crt-panel2 px-3 py-2">
-        <span className="pixel-font text-[10px] text-crt-gold">WHITEBOARD</span>
+    <div className="dc-bevel-deep flex h-full min-h-0 flex-col overflow-hidden border-4 border-black bg-crt-panel">
+      <div className="flex h-12 flex-none items-center gap-2 border-b-4 border-black bg-crt-panel2 px-[18px]">
+        <span className="pixel-font text-[13px] text-crt-gold">WHITEBOARD</span>
         <div className="ml-auto flex items-center gap-1">
           {COLORS.map((c) => (
             <button
